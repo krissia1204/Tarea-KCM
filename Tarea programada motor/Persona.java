@@ -16,7 +16,6 @@ public class Persona { //inicio clase Persona
    private String al_lado;
    private String odia_olor;
    private String[] npersonas;
-   private String linea;
    private String[] valores;
    //File myObj = new File("reglas.csv"); como comentario pq se lee abajo, creo que no se necesita
 
@@ -37,8 +36,9 @@ public class Persona { //inicio clase Persona
             {
                 contador++;
             }
-
+            //try para guardar personas en array
             try 
+    
             {
                 String [] npersonas= new String[contador];
                 int i= 0;
@@ -48,7 +48,7 @@ public class Persona { //inicio clase Persona
                     npersonas[i]= linea;
                     i++;
                     
-                }
+                }}
 
              catch (IOException e) 
              {
@@ -56,6 +56,7 @@ public class Persona { //inicio clase Persona
                 } 
 
             } 
+            
         catch(FileNotFoundException e) 
         {
             System.out.println("Archivo no encontrado: " + e.getMessage());            
@@ -79,14 +80,17 @@ public class Persona { //inicio clase Persona
                 }
             }
         }
-    }     
+         
 }
+
+    //metodo para separar los valores de cada persona (linea) por comas
     public void setPersona(){
 
         for (int i=0; i<=npersonas.length; i++){
 
-            valores[]= npersonas[i].split(",");
+            valores = npersonas[i].split(",");
 
+            System.out.println(valores);
         }
 
     }
