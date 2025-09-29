@@ -1,103 +1,69 @@
-public class Persona {
 
-    // Identificación básica
-    private String nombre;
-    private int edad; // < 18 niño, >= 18 adulto (según enunciado)
 
-    // Preferencias (tal como vienen en el archivo de reglas)
-    // Ejemplos: fila: "primera", "2", "!2"; columna: "central", "!central", "pasillo", "!pasillo", "1", "2", ...
-    private String filaPreferencia;     // puede ser null si no está en reglas
-    private String columnaPreferencia;  // puede ser null si no está en reglas
+public class Persona { //inicio clase Persona
 
-    // Características/atributos
-    private String huele_a;    // Ej: "sucio", "perfume" (puede ser null)
-    private String tiene;      // Ej: "palomitas", "sombrero", "hablada", "celular_encendido" (puede contener varios separados por "," si aparecen múltiples)
-    private String al_lado;    // Regla al lado. Puede contener varias condiciones separadas por "," (p.e.: "nombre:Luisa,adulto,nadie")
-    private String odia_olor;  // Ej: "sucio", "perfume", "todos" (si varias, separadas por ",")
+// Campos/atributos
+   private String nombre;
+   private int edad;
+   private int fila;
+   private int columna;
+   private String huele_a;
+   private String tiene;
+   private String al_lado;
+   private String odia_olor;
 
-    // Ubicación real asignada en la sala según archivo de juego (1-based)
-    private int filaAsignada = -1;
-    private int columnaAsignada = -1;
 
-    public Persona(String nombre, int edad) {
-        this.nombre = nombre;
-        this.edad = edad;
-    }
+   public Persona(String UnNombre, int laEdad, int LaFila, int laColumna, String eHuele_a, String eTiene, String eal_lado, String eOdia_Olor){
+        this.nombre= UnNombre;
+        this.edad=laEdad;
+        this.fila=LaFila;
+        this.columna=laColumna;
+        this.huele_a= eHuele_a;
+        this.tiene= eTiene;
+        this.al_lado= eal_lado;
+        this.odia_olor= eOdia_Olor;
 
-    // Getters básicos
-    public String getNombre() {
-        return nombre;
-    }
+   }
 
-    public int getEdad() {
-        return edad;
-    }
+   public String getNombre(){
 
-    // Preferencias
-    public String getFilaPreferencia() {
-        return filaPreferencia;
-    }
+    return nombre;
+   }
 
-    public void setFilaPreferencia(String filaPreferencia) {
-        this.filaPreferencia = filaPreferencia;
-    }
 
-    public String getColumnaPreferencia() {
-        return columnaPreferencia;
-    }
+    public int getEdad(){
 
-    public void setColumnaPreferencia(String columnaPreferencia) {
-        this.columnaPreferencia = columnaPreferencia;
-    }
+    return edad;
+   }
 
-    // Características
-    public String getHueleA() {
-        return huele_a;
-    }
+    public int getFila(){
 
-    public void setHueleA(String huele_a) {
-        this.huele_a = huele_a;
-    }
+    return fila;
+   }
 
-    public String getTiene() {
-        return tiene;
-    }
+    public int getColumna(){
 
-    public void setTiene(String tiene) {
-        this.tiene = tiene;
-    }
+    return columna;
+   }
 
-    public String getAlLado() {
-        return al_lado;
-    }
+    public String getHueleA(){
 
-    public void setAlLado(String al_lado) {
-        this.al_lado = al_lado;
-    }
+    return huele_a;
+   }
 
-    public String getOdiaOlor() {
-        return odia_olor;
-    }
+    public String getTiene(){
 
-    public void setOdiaOlor(String odia_olor) {
-        this.odia_olor = odia_olor;
-    }
+    return tiene;
+   }
 
-    // Ubicación asignada
-    public void setUbicacion(int fila, int columna) {
-        this.filaAsignada = fila;
-        this.columnaAsignada = columna;
-    }
+    public String getAlLado(){
 
-    public int getFilaAsignada() {
-        return filaAsignada;
-    }
+    return al_lado;
+   }
 
-    public int getColumnaAsignada() {
-        return columnaAsignada;
-    }
+    public String getOdiaOlor(){
 
-    public boolean estaUbicada() {
-        return filaAsignada > 0 && columnaAsignada > 0;
-    }
+    return odia_olor;
+   }
+
 }

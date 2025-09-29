@@ -1,48 +1,76 @@
-public class Sala {
+     public class Sala {
         private int filas;
         private int columnas;
         private int pasillo;
-        private String[][] sala_de_cine;
-        private String archivoReglas;
-        private String archivoDistribucion;
+        private char [][] asientos;
         
         //Constructor vacío
         public Sala () { 
                 
         }
          //Método que recibe los argumentos y los guarda
-        public void setAcomodadorDeSala(String[] sala) {
-                 //Recibe los argumentos y los guarda
-                if (sala.length < 3) {
-                        throw new IllegalArgumentException("Uso: java -jar motor.jar <NxMxP> <archivoReglas> <archivoDistribucion>");
-                }
+        public void setAcomodadorDeSala(String config) {
 
-                 String[] tamaño_sala= sala[0].split("x");
-                 if (tamaño_sala.length != 3) {
-                        throw new IllegalArgumentException("Formato incorrecto en dimensiones. Debe ser NxMxP (ej: 5x9x1)");
-                 }
+                String [] sala= config.split("x");
 
-                 this.filas = Integer.parseInt(tamaño_sala[0]);
-                 this.columnas = Integer.parseInt(tamaño_sala[1]);
-                 this.pasillo = Integer.parseInt(tamaño_sala[2]);
+                if (sala.length>2){
 
-                //Guardar los nombres de archivo
-                this.archivoReglas = sala[1];
-                this.archivoDistribucion = sala[2];
-
-                this.sala_de_cine = new String[this.filas][this.columnas];
-
-                //Indicar el pasillo (en medio de las columnas)
-                if (this.pasillo == 1) {
-                       sala_de_cine[this.filas][this.columnas / 2] = null;
-                } else if (this.pasillo == 2) {
-                       sala_de_cine[this.filas][this.columnas / 3] = null;
-                       sala_de_cine[this.filas][2*(this.columnas / 3)] = null; 
-                } else {
-                System.out.println("No pueden haber más de dos pasillos.");
+                        System.out.println("Formato incorrecto, la dimesion de la sala no se puede completar.Por fabor ingrese un formato AxBx[C]");
 
                 }
-        }
+
+                else if (sala.length==1){
+
+                        filas=Integer.parseInt(sala[0]);
+                        columnas=Integer.parseInt(sala[1]);
+                        pasillo=0;
+                }
+
+                else {
+
+                        filas=Integer.parseInt(sala[0]);
+                        columnas=Integer.parseInt(sala[1]);
+                        pasillo=Integer.parseInt(sala[2]);
+
+                }
+
+                for (int i= 0; i<filas; i++){
+                        for (int j= 0; j<columnas; j++){
+
+                                if(esPasillo(j)){
+
+                                        asientos[i][j]='|';
+
+                                }
+
+                                else {
+                                        asientos[i][j]='0';
+
+                                }
+
+
+                        }
+
+                }
+              
+                
+
+                }
+
+
+                private boolean esPasillo(int columna){
+                      
+                        if (pasillo==0) return false;
+                        int bloque= columnas/(pasillo+1);
+                        for(int k=1; k<=pasillo;k++){
+
+                                int columnaPasillo= k*bloque;
+                                if (columna==columnaPasillo-1) return true;
+                        }
+                        return false;
+
+                }
+        
         //Métodos get por si es necesario
         //Borrar en caso de no ser necesario
         public int getFilas() {
@@ -57,4 +85,5 @@ public class Sala {
                 return pasillo;
         }
 
-} //Final de clase Sala
+         //Final de clase Sala
+}
