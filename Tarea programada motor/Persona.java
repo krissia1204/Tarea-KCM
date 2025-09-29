@@ -1,81 +1,103 @@
-import java.io.BufferedReader;
-import java.io.File; //Para encontrar un archivo 
-import java.io.FileNotFoundException; //Por si no encuentra el archivo con ese nombre
-import java.io.FileReader;
-import java.io.IOException;
+public class Persona {
 
-public class Persona { //inicio clase Persona
+    // Identificación básica
+    private String nombre;
+    private int edad; // < 18 niño, >= 18 adulto (según enunciado)
 
-// Campos/atributos
-   private String nombre;
-   private int edad;
-   private int fila;
-   private int columna;
-   private String huele_a;
-   private String tiene;
-   private String al_lado;
-   private String odia_olor;
+    // Preferencias (tal como vienen en el archivo de reglas)
+    // Ejemplos: fila: "primera", "2", "!2"; columna: "central", "!central", "pasillo", "!pasillo", "1", "2", ...
+    private String filaPreferencia;     // puede ser null si no está en reglas
+    private String columnaPreferencia;  // puede ser null si no está en reglas
 
+    // Características/atributos
+    private String huele_a;    // Ej: "sucio", "perfume" (puede ser null)
+    private String tiene;      // Ej: "palomitas", "sombrero", "hablada", "celular_encendido" (puede contener varios separados por "," si aparecen múltiples)
+    private String al_lado;    // Regla al lado. Puede contener varias condiciones separadas por "," (p.e.: "nombre:Luisa,adulto,nadie")
+    private String odia_olor;  // Ej: "sucio", "perfume", "todos" (si varias, separadas por ",")
 
-   public Persona(String UnNombre, int laEdad, int LaFila, int laColumna, String eHuele_a, String eTiene, String eal_lado, String eOdia_Olor){
-        this.nombre= UnNombre;
-        this.edad=laEdad;
-        this.fila=LaFila;
-        this.columna=laColumna;
-        this.huele_a= eHuele_a;
-        this.tiene= eTiene;
-        this.al_lado= eal_lado;
-        this.odia_olor= eOdia_Olor;
+    // Ubicación real asignada en la sala según archivo de juego (1-based)
+    private int filaAsignada = -1;
+    private int columnaAsignada = -1;
 
-   }
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
 
-   public String getNombre(){
+    // Getters básicos
+    public String getNombre() {
+        return nombre;
+    }
 
-    return nombre;
-   }
+    public int getEdad() {
+        return edad;
+    }
 
+    // Preferencias
+    public String getFilaPreferencia() {
+        return filaPreferencia;
+    }
 
-    public int getEdad(){
+    public void setFilaPreferencia(String filaPreferencia) {
+        this.filaPreferencia = filaPreferencia;
+    }
 
-    return edad;
-   }
+    public String getColumnaPreferencia() {
+        return columnaPreferencia;
+    }
 
-    public int getFila(){
+    public void setColumnaPreferencia(String columnaPreferencia) {
+        this.columnaPreferencia = columnaPreferencia;
+    }
 
-    return fila;
-   }
+    // Características
+    public String getHueleA() {
+        return huele_a;
+    }
 
-    public int getColumna(){
+    public void setHueleA(String huele_a) {
+        this.huele_a = huele_a;
+    }
 
-    return columna;
-   }
+    public String getTiene() {
+        return tiene;
+    }
 
-    public String getHueleA(){
+    public void setTiene(String tiene) {
+        this.tiene = tiene;
+    }
 
-    return huele_a;
-   }
+    public String getAlLado() {
+        return al_lado;
+    }
 
-    public String getTiene(){
+    public void setAlLado(String al_lado) {
+        this.al_lado = al_lado;
+    }
 
-    return tiene;
-   }
+    public String getOdiaOlor() {
+        return odia_olor;
+    }
 
-    public String getAlLado(){
+    public void setOdiaOlor(String odia_olor) {
+        this.odia_olor = odia_olor;
+    }
 
-    return al_lado;
-   }
+    // Ubicación asignada
+    public void setUbicacion(int fila, int columna) {
+        this.filaAsignada = fila;
+        this.columnaAsignada = columna;
+    }
 
-    public String getOdiaOlor(){
+    public int getFilaAsignada() {
+        return filaAsignada;
+    }
 
-    return odia_olor;
-   }
+    public int getColumnaAsignada() {
+        return columnaAsignada;
+    }
 
-
-
-
-
-
-
-
-
+    public boolean estaUbicada() {
+        return filaAsignada > 0 && columnaAsignada > 0;
+    }
 }
