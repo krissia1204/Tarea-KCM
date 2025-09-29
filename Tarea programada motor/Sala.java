@@ -19,7 +19,6 @@ public class Sala {
                  this.filas = Integer.parseInt(tamaño_sala[0]);
                  this.columnas = Integer.parseInt(tamaño_sala[1]);
                  this.pasillo = Integer.parseInt(tamaño_sala[2]);
-                 sala_de_cine = new String[][];
         }
 
 }

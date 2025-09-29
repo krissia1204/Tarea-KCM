@@ -15,84 +15,67 @@ public class Persona { //inicio clase Persona
    private String tiene;
    private String al_lado;
    private String odia_olor;
-   private String[] npersonas;
-   private String[] valores;
-   //File myObj = new File("reglas.csv"); como comentario pq se lee abajo, creo que no se necesita
 
-//Constructor
-    public Persona() {
-    }
 
-    // Método que recibe el nombre del archivo y lo lee línea por línea
-    public static void LeerPersona(String nombreArchivo) 
-    {
-        BufferedReader br = null;
-        try 
-        {
-            br = new BufferedReader(new FileReader(nombreArchivo));
-            String linea;
-            int contador= 0;
-            while ((linea = br.readLine()) != null) 
-            {
-                contador++;
-            }
-            //try para guardar personas en array
-            try 
-    
-            {
-                String [] npersonas= new String[contador];
-                int i= 0;
-                br = new BufferedReader(new FileReader(nombreArchivo));
-                while ((linea = br.readLine()) != null) 
-                {
-                    npersonas[i]= linea;
-                    i++;
-                    
-                }}
+   public Persona(String UnNombre, int laEdad, int LaFila, int laColumna, String eHuele_a, String eTiene, String eal_lado, String eOdia_Olor){
+        this.nombre= UnNombre;
+        this.edad=laEdad;
+        this.fila=LaFila;
+        this.columna=laColumna;
+        this.huele_a= eHuele_a;
+        this.tiene= eTiene;
+        this.al_lado= eal_lado;
+        this.odia_olor= eOdia_Olor;
 
-             catch (IOException e) 
-             {
-            System.out.println("Error al leer el archivo: " + e.getMessage());
-                } 
+   }
 
-            } 
-            
-        catch(FileNotFoundException e) 
-        {
-            System.out.println("Archivo no encontrado: " + e.getMessage());            
-        } 
-        catch (IOException e) 
-        {
-            System.out.println("Error al leer el archivo: " + e.getMessage());
-        } 
-        finally 
-        {
-            // Cerrar el BufferedReader si se abrió
-            if (br != null) 
-            {
-                try 
-                {
-                    br.close();
-                } 
-                catch (IOException e) 
-                {
-                    System.out.println("Error al cerrar el archivo: " + e.getMessage());
-                }
-            }
-        }
-         
-}
+   public String getNombre(){
 
-    //metodo para separar los valores de cada persona (linea) por comas
-    public void setPersona(){
+    return nombre;
+   }
 
-        for (int i=0; i<=npersonas.length; i++){
 
-            valores = npersonas[i].split(",");
+    public int getEdad(){
 
-            System.out.println(valores);
-        }
+    return edad;
+   }
 
-    }
+    public int getFila(){
+
+    return fila;
+   }
+
+    public int getColumna(){
+
+    return columna;
+   }
+
+    public String getHueleA(){
+
+    return huele_a;
+   }
+
+    public String getTiene(){
+
+    return tiene;
+   }
+
+    public String getAlLado(){
+
+    return al_lado;
+   }
+
+    public String getOdiaOlor(){
+
+    return odia_olor;
+   }
+
+
+
+
+
+
+
+
 
 }
